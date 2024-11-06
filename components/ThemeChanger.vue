@@ -1,12 +1,22 @@
 <template>
   <div class="theme-change-button">
-    <span
+    <Icon
+      id="themeIcon"
+      class="textColour"
+      :name="
+        theme == 'dark'
+          ? 'material-symbols:light-mode'
+          : 'material-symbols:dark-mode'
+      "
+      @click="changeTheme"
+    />
+    <!-- <span
       id="theme-symbol"
       class="material-symbols-outlined textColour"
       @click="changeTheme"
     >
       light_mode
-    </span>
+    </span> -->
   </div>
 </template>
 
@@ -20,12 +30,18 @@ const changeTheme = () => {
   if (theme.value === 'light') {
     root.style.setProperty('--text', '255,255,255');
     root.style.setProperty('--bg', '0,0,0');
-    document.querySelector('#theme-symbol')!.innerHTML = 'light_mode';
+    // document.querySelector('#theme-symbol')!.innerHTML = 'light_mode';
+    document
+      .querySelector('#themeIcon')!
+      .setAttribute('name', 'material-symbols:light-mode');
     theme.value = 'dark';
   } else {
     root.style.setProperty('--text', '0,0,0');
     root.style.setProperty('--bg', '255,255,255');
-    document.querySelector('#theme-symbol')!.innerHTML = 'dark_mode';
+    // document.querySelector('#theme-symbol')!.innerHTML = 'dark_mode';
+    document
+      .querySelector('#themeIcon')!
+      .setAttribute('name', 'material-symbols:dark-mode');
     theme.value = 'light';
   }
 };
