@@ -5,6 +5,19 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxt/icon'],
   ssr: false,
   app: {
-    baseURL: 'https://iwouldntbother.github.io/cci-video-showcase/',
+    head: {
+      title: 'CCI Video Showcase',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Simple site to show video',
+        },
+      ],
+      link: [{ rel: 'icon', type: 'image/svg', href: '/favicon.svg' }],
+    },
+    baseURL: '/cci-video-showcase/',
   },
 });
