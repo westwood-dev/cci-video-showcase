@@ -4,4 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/icon'],
   ssr: false,
+  app: {
+    baseURL: 'https://iwouldntbother.github.io/cci-video-showcase/',
+  },
 });
