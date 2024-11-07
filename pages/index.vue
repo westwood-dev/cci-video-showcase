@@ -7,7 +7,6 @@
 </template>
 <script setup>
 const route = useRoute();
-const view = ref(route.query.view || 'gallery');
 
 onMounted(() => {
   console.log(route.query);

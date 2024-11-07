@@ -11,6 +11,12 @@
   src: url('@/assets/fonts/BiggerDisplay.otf') format('opentype');
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --text: 255, 255, 255;
   --bg: 0, 0, 0;

@@ -4,7 +4,6 @@
       <h1>brief one</h1>
       <h1>"light"</h1>
       <div class="controls">
-        <button class="control textColour" @click="resetPosition">Reset</button>
         <ThemeChanger class="control" />
         <button class="control textColour" @click="changeToGalleryView">
           Gallery View
