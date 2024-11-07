@@ -3,6 +3,16 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/icon'],
+  icon: {
+    clientBundle: {
+      icons: [
+        'material-symbols:dark-mode',
+        'material-symbols:light-mode',
+        'material-symbols:close',
+      ],
+      scan: true,
+    },
+  },
   ssr: false,
   app: {
     head: {

@@ -41,4 +41,10 @@ body {
   background-color: rgb(var(--text));
   transition: background-color 0.5s;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
 </style>
