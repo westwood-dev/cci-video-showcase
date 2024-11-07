@@ -397,7 +397,7 @@ const hasOverlap = (newPos, existingPositions) => {
 const generatePositions = (numItems) => {
   const newPositions = [];
 
-  console.log('Generating ' + numItems + ' positions.');
+  // console.log('Generating ' + numItems + ' positions.');
 
   for (let i = 0; i < numItems; i++) {
     let attempts = 0;
@@ -437,7 +437,7 @@ onMounted(() => {
   itemHeight = window.innerWidth < 768 ? 125 : 350; // Height of each div
 
   generatePositions(props.items.length);
-  console.log(positions.value);
+  // console.log(positions.value);
 
   let counter = 0;
 

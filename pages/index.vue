@@ -1,12 +1,13 @@
 <template>
   <div style="overflow: hidden">
-    <Gallery v-if="route.query.view == 'gallery'" :items="items" />
-    <Grid v-else-if="route.query.view == 'grid'" :items="items" />
+    <Grid v-if="route.query.view == 'grid'" :items="items" />
+    <Gallery v-else :items="items" />
     <!-- <TestGridGallery /> -->
   </div>
 </template>
 <script setup>
 const route = useRoute();
+const view = ref(route.query.view || 'gallery');
 
 onMounted(() => {
   console.log(route.query);
