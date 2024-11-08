@@ -9,10 +9,10 @@ const handleError = () => clearError({ redirect: '/' });
 </script>
 
 <template>
-  <div>
-    <h2>{{ error?.statusCode }}</h2>
-    <p>huh, something isn't right here...</p>
-    <p id="homeBTN" @click="handleError">head home</p>
+  <div class="bgColour">
+    <h2 class="textColour">{{ error?.statusCode }}</h2>
+    <p class="textColour">huh, something isn't right here...</p>
+    <p id="homeBTN" class="textColour" @click="handleError">head home</p>
     <!-- <p>{{ route.path.split('/')[1] }}</p> -->
   </div>
 </template>

@@ -1,16 +1,16 @@
 <template>
   <div style="overflow: hidden">
-    <Grid v-if="route.query.view == 'grid'" :items="items" />
-    <Gallery v-else :items="items" />
+    <Grid v-if="route.query.view == 'grid'" :items="data" />
+    <Gallery v-else :items="data" />
     <!-- <TestGridGallery /> -->
   </div>
 </template>
 <script setup>
 const route = useRoute();
 
-onMounted(() => {
-  console.log(route.query);
-});
+// onMounted(() => {
+//   console.log(route.query);
+// });
 
 const items = ref([]);
 
@@ -31,11 +31,20 @@ Penatibus netus aliquam tellus praesent duis vel. Posuere commodo elementum ince
   videoURL: '/video/000.mp4',
 };
 
-for (let i = 0; i < 90; i++) {
-  items.value.push({ ...exampleItem, id: i + 1, title: `Item ${i + 1}` });
-}
-</script>
+// for (let i = 0; i < 90; i++) {
+//   items.value.push({ ...exampleItem, id: i + 1, title: `Item ${i + 1}` });
+// }
 
+// const { data } = useAsyncData('results', async () => $fetch('/results.json'), {
+//   transform: (data) => data.json(),
+// });
+
+const { data } = await useFetch('/results.json');
+onMounted(() => {
+  console.log(data.value);
+  items.value = data.value;
+});
+</script>
 <style scoped>
 html {
   overflow: hidden;

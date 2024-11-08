@@ -7,6 +7,7 @@
     @touchstart="handleTouchStart"
     @touchmove="handleTouchMove"
     @touchend="handleTouchEnd"
+    @mousewheel="handleScroll"
   >
     <div class="gallery-layer-0" :style="centerLayerStyle">
       <div class="title-cont">
@@ -38,17 +39,14 @@
         v-for="layer in layers"
         :key="layer.index"
         :class="`gallery-layer-${layer.index}`"
-        :style="[
-          layer.style,
-          // { width: containerWidth + 'px', height: containerHeight + 'px' },
-        ]"
+        :style="[layer.style]"
       >
         <div
           v-for="(item, itemIndex) in layer.items"
           :key="itemIndex"
           class="item"
           :id="`item-${layer.index}-${itemIndex}`"
-          :style="{ backgroundImage: `url(${item.imageURL})` }"
+          :style="{ backgroundImage: `url(${item.thumbURL})` }"
           @click="handleItemClick($event, layer.index, itemIndex, item)"
           @mouseenter="handleItemHover(layer.index, itemIndex, item)"
           @mouseleave="handleItemLeave(layer.index, itemIndex, item)"
@@ -57,9 +55,16 @@
             class="item-details"
             :id="'details-' + layer.index + '-' + itemIndex"
           >
-            <h1 class="item-details-question textColour">{{ item.title }}</h1>
+            <h1 class="item-details-question textColour">
+              {{
+                item.title.length > 80
+                  ? item.title.slice(0, 80).split(' ').slice(0, -1).join(' ') +
+                    '...'
+                  : item.title
+              }}
+            </h1>
             <p class="item-details-author textColour">
-              {{ item.authors.join(', ') }}
+              {{ item['authors-array'].join(', ') }}
             </p>
           </div>
         </div>
@@ -88,10 +93,15 @@
           ></video>
         </div>
         <div class="focused-item-details bgColour textColour">
+          <!-- <h1>{{ focusedItem.itemData.title }}</h1>
+          <h3>{{ focusedItem.itemData['authors-array'] }}</h3>
+          <p class="textColour">{{ focusedItem.itemData.description }}</p> -->
           <h1>{{ focusedItem.itemData.title }}</h1>
-          <h3>{{ focusedItem.itemData.authors.join(', ') }}</h3>
-          <p class="textColour">{{ focusedItem.itemData.description }}</p>
-          <!-- {{ focusedItem }} -->
+          <h3>{{ focusedItem.itemData['authors-array'].join(', ') }}</h3>
+          <h2>Final Proposition</h2>
+          <p>{{ focusedItem.itemData['final-proposition'] }}</p>
+          <h2>Insights</h2>
+          <p>{{ focusedItem.itemData['insights'] }}</p>
         </div>
       </div>
     </Teleport>
@@ -335,7 +345,7 @@ const handleItemHover = (layerIndex, itemIndex, item) => {
   // console.log(`Hovering item ${itemIndex} in layer ${layerIndex}`, item);
   document.getElementById(
     'details-' + layerIndex + '-' + itemIndex
-  ).style.display = 'block';
+  ).style.display = 'flex';
 };
 
 const handleItemLeave = (layerIndex, itemIndex, item) => {
@@ -585,6 +595,14 @@ const handleTouchEnd = () => {
   // console.log('Touch end');
   isDragging.value = false;
 };
+
+// TESTING
+
+const handleScroll = (e) => {
+  const el = e.target;
+  console.log(e, el);
+  el.style.transform = `scale(${1 - el.scrollTop / 1000})`;
+};
 </script>
 
 <style scoped>
@@ -635,13 +653,13 @@ const handleTouchEnd = () => {
 
 .title-cont .controls {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 1rem;
   position: absolute;
   left: 0;
-  bottom: 0;
-  padding: 1rem;
+  top: -2rem;
+  padding: 1rem 0;
   height: 6rem;
   pointer-events: none;
 }
@@ -670,17 +688,22 @@ const handleTouchEnd = () => {
 
 .item-details {
   display: none;
+  flex-direction: column;
+  justify-content: flex-end;
   position: absolute;
   bottom: 0;
-  max-width: 80%;
+  width: 100%;
+  height: 100%;
   padding: 1rem;
+  padding-right: 15%;
+  background-color: rgba(var(--bg), 0.8);
 }
 
 .item-details-question {
   font-size: 3rem;
   font-family: 'Bigger Display', sans-serif;
   text-transform: uppercase;
-  margin-bottom: -1rem;
+  line-height: 3rem;
 }
 
 .item {
@@ -696,7 +719,6 @@ const handleTouchEnd = () => {
   transition: transform 0.3s ease, opacity 0.3s ease;
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .item:hover {
@@ -721,13 +743,14 @@ const handleTouchEnd = () => {
 }
 
 .item-clone {
-  max-width: 100%;
+  width: 100%;
   position: relative;
-  background-color: blueviolet;
+  /* background-color: blueviolet !important; */
 }
 
 .item-clone video {
   width: 100%;
+  max-height: 70vh;
   height: auto;
   object-fit: contain;
 }
@@ -737,11 +760,29 @@ const handleTouchEnd = () => {
   padding: 1rem;
 }
 
+/* .focused-item-details h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-family: 'Bigger Display', sans-serif;
+  margin-bottom: -1rem;
+}
+
+.focused-item-details h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+} */
+
 .focused-item-details h1 {
   font-size: 3rem;
   text-transform: uppercase;
   font-family: 'Bigger Display', sans-serif;
   margin-bottom: -1rem;
+}
+.focused-item-details h2 {
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
 }
 
 .focused-item-details h3 {
@@ -785,7 +826,7 @@ const handleTouchEnd = () => {
   }
   .title-cont .controls {
     height: 6vh;
-    flex-direction: column;
+    flex-direction: row-reverse;
   }
 
   .title-cont .controls .control {
@@ -798,12 +839,7 @@ const handleTouchEnd = () => {
 
   .item {
     width: 300px;
-    height: 125px;
-  }
-
-  .focused-item-container {
-    /* width: 95vw !important;
-    height: 95vh !important; */
+    height: 175px;
   }
 }
 </style>

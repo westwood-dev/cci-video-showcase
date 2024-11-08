@@ -1,20 +1,26 @@
 <template>
-  <div>
+  <div class="bgColour">
     <!-- <Gallery /> -->
     <NuxtPage />
   </div>
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @font-face {
   font-family: 'Bigger Display';
-  src: url('@/assets/fonts/BiggerDisplay.otf') format('opentype');
+  src: url('@/assets/fonts/BiggerDisplay.woff') format('woff'),
+    url('@/assets/fonts/BiggerDisplay.woff2') format('woff2');
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 :root {
