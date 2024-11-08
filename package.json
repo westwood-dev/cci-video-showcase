@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "deploy": "NUXT_APP_BASE_URL=/cci-video-showcase/ npx nuxt build --preset github_pages",
+    "deploy": "NUXT_APP_BASE_URL=/cci-video-showcase/ npx nuxt generate --preset github_pages",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
