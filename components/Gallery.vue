@@ -81,7 +81,9 @@
         :style="focusedItemStyle"
         @click="handleFocusedItemClick"
       >
-        <div class="close-btn">close</div>
+        <div class="close-btn textColour" @click="handleBlockerClick">
+          <Icon name="material-symbols:close" size="2rem" />
+        </div>
         <div class="item-clone">
           <video
             :src="focusedItem.itemData.videoURL || '@/assets/video/000.mp4'"
@@ -692,6 +694,14 @@ const handleTouchEnd = () => {
   justify-content: flex-start;
   align-items: center;
   padding: 1rem;
+  padding-top: 4rem;
+}
+
+.focused-item-container .close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
 }
 
 .focused-item-container.animating {
@@ -705,7 +715,8 @@ const handleTouchEnd = () => {
 }
 
 .item-clone video {
-  width: 100%;
+  width: calc(100% - 2rem);
+  margin: 0 1rem;
   max-height: 70vh;
   height: auto;
   object-fit: contain;
@@ -718,9 +729,9 @@ const handleTouchEnd = () => {
 
 .focused-item-details h1 {
   font-size: 3rem;
+  line-height: 3rem;
   text-transform: uppercase;
   font-family: 'Bigger Display', sans-serif;
-  margin-bottom: -1rem;
 }
 .focused-item-details h2 {
   font-size: 2rem;

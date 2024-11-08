@@ -305,16 +305,16 @@ const changeToGalleryView = () => {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 1rem 5vw;
+  padding: 1rem;
 }
 
 .selected-item-container.animating {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  top: 50% !important;
-  left: 50% !important;
-  width: 80vw !important;
-  height: 80vh !important;
-  transform: translate(-50%, -50%) !important;
+  top: 50%;
+  left: 50%;
+  width: 80vw;
+  max-height: 90vh;
+  transform: translate(-50%, -50%);
 }
 
 .overlay {
@@ -341,8 +341,9 @@ const changeToGalleryView = () => {
 }
 
 .selected-item-container video {
-  width: 100%;
-  max-height: 70vh;
+  width: calc(100% - 2rem);
+  margin: 0 1rem;
+  max-height: 75vh;
   height: auto;
   object-fit: contain;
 }
@@ -354,9 +355,9 @@ const changeToGalleryView = () => {
 
 .selected-item-details h1 {
   font-size: 3rem;
+  line-height: 3rem;
   text-transform: uppercase;
   font-family: 'Bigger Display', sans-serif;
-  margin-bottom: -1rem;
 }
 .selected-item-details h2 {
   font-size: 2rem;
@@ -412,6 +413,11 @@ const changeToGalleryView = () => {
 
   .grid-item-details p {
     font-size: 0.8rem;
+  }
+
+  .selected-item-container.animating {
+    height: 75vh;
+    width: 90vw;
   }
 
   .selected-item-container {
