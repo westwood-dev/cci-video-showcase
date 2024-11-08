@@ -16,7 +16,9 @@ jobs:
           node-version: '20'
       # Pick your own package manager and build script
       - run: npm install
-      - run: NUXT_APP_BASE_URL=/cci-video-showcase/ npx nuxt build --preset github_pages
+      - run: npx nuxt build --preset github_pages
+      - name: Create CNAME
+        run: cd .output && echo "cci.wwstwd.studio" > CNAME && cd ..
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
