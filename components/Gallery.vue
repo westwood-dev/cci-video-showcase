@@ -7,7 +7,6 @@
     @touchstart="handleTouchStart"
     @touchmove="handleTouchMove"
     @touchend="handleTouchEnd"
-    @mousewheel="handleScroll"
   >
     <div class="gallery-layer-0" :style="centerLayerStyle">
       <div class="title-cont">
@@ -93,15 +92,16 @@
           ></video>
         </div>
         <div class="focused-item-details bgColour textColour">
-          <!-- <h1>{{ focusedItem.itemData.title }}</h1>
-          <h3>{{ focusedItem.itemData['authors-array'] }}</h3>
-          <p class="textColour">{{ focusedItem.itemData.description }}</p> -->
           <h1>{{ focusedItem.itemData.title }}</h1>
           <h3>{{ focusedItem.itemData['authors-array'].join(', ') }}</h3>
-          <h2>Final Proposition</h2>
-          <p>{{ focusedItem.itemData['final-proposition'] }}</p>
-          <h2>Insights</h2>
-          <p>{{ focusedItem.itemData['insights'] }}</p>
+          <template v-if="focusedItem.itemData['final-proposition'].length > 0">
+            <h2>Final Proposition</h2>
+            <p>{{ focusedItem.itemData['final-proposition'] }}</p>
+          </template>
+          <template v-if="focusedItem.itemData['insights'].length > 0">
+            <h2>Insights</h2>
+            <p>{{ focusedItem.itemData['insights'] }}</p>
+          </template>
         </div>
       </div>
     </Teleport>
@@ -143,13 +143,13 @@ const props = defineProps({
     required: true,
   },
 });
-// Math.ceil(Math.sqrt(props.items.length))
+
 let containerWidth =
   Math.ceil(Math.sqrt(props.items.length)) * 1000 ||
   100 * props.items.length * 2 ||
   2700;
 let containerHeight = containerWidth * 0.75 || 2040;
-const INACTIVITY_TIMEOUT = 30000; // 30 seconds in milliseconds
+const INACTIVITY_TIMEOUT = 30000;
 
 const centerLayerStyle = reactive({ transform: 'translate3d(0px, 0px, 0px)' });
 let inactivityTimer = null;
@@ -203,7 +203,6 @@ let animationFrameId;
 
 const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
-// Reset function
 const resetPosition = () => {
   isResetting.value = true;
   currentOffset.value = { x: 0, y: 0 };
@@ -211,7 +210,6 @@ const resetPosition = () => {
   targetY.value = 0;
 };
 
-// Start inactivity timer
 const startInactivityTimer = (multiplier = 1) => {
   clearTimeout(inactivityTimer);
   inactivityTimer = setTimeout(() => {
@@ -233,18 +231,15 @@ const handleMouseMove = (event) => {
   const centerX = containerRect.left + containerRect.width / 2;
   const centerY = containerRect.top + containerRect.height / 2;
 
-  // map users mouse distance from center to half containerWidth/containerHeight
   targetX.value =
     (event.clientX - centerX) * (containerWidth / containerRect.width);
   targetY.value =
     (event.clientY - centerY) * (containerHeight / containerRect.height);
 
-  // Reset inactivity timer on mouse move
   startInactivityTimer();
 };
 
 const handleMouseLeave = () => {
-  // resetPosition();
   startInactivityTimer(0.3);
 };
 
@@ -255,10 +250,8 @@ const handleItemClick = async (e, layerIndex, itemIndex, itemData) => {
   const item = e.target;
   const itemRect = item.getBoundingClientRect();
 
-  // First set the blocker to be visible but fully transparent
   blocker.value = true;
 
-  // Create initial position data
   focusedItem.value = {
     id: `item-${layerIndex}-${itemIndex}`,
     layerIndex,
@@ -268,7 +261,6 @@ const handleItemClick = async (e, layerIndex, itemIndex, itemData) => {
     itemData,
   };
 
-  // Set initial position and size exactly matching the clicked item
   focusedItemStyle.value = {
     position: 'fixed',
     top: `${itemRect.top}px`,
@@ -276,13 +268,11 @@ const handleItemClick = async (e, layerIndex, itemIndex, itemData) => {
     width: `${itemRect.width}px`,
     height: `${itemRect.height}px`,
     transform: 'none',
-    transition: 'none', // Ensure no transition for initial positioning
+    transition: 'none',
   };
 
-  // Force a reflow to ensure the initial position is rendered
   void document.body.offsetHeight;
 
-  // Now add the transition and animate to the center
   requestAnimationFrame(() => {
     focusedItemStyle.value = {
       ...focusedItemStyle.value,
@@ -295,7 +285,6 @@ const handleItemClick = async (e, layerIndex, itemIndex, itemData) => {
     };
   });
 
-  // Remove animating class after animation completes
   setTimeout(() => {
     if (focusedItem.value) {
       focusedItem.value.animating = false;
@@ -313,13 +302,10 @@ const handleBlockerClick = async () => {
     return;
   }
 
-  // Get the current position of the original item
   const itemRect = originalItem.getBoundingClientRect();
 
-  // Set animating flag
   focusedItem.value.animating = true;
 
-  // Update transition and animate back to original position
   focusedItemStyle.value = {
     ...focusedItemStyle.value,
     top: `${itemRect.top}px`,
@@ -330,7 +316,6 @@ const handleBlockerClick = async () => {
     transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
   };
 
-  // Wait for animation to complete before removing
   await new Promise((resolve) => setTimeout(resolve, 500));
 
   focusedItem.value = null;
@@ -342,40 +327,40 @@ const handleFocusedItemClick = (e) => {
 };
 
 const handleItemHover = (layerIndex, itemIndex, item) => {
-  // console.log(`Hovering item ${itemIndex} in layer ${layerIndex}`, item);
   document.getElementById(
     'details-' + layerIndex + '-' + itemIndex
   ).style.display = 'flex';
+  document.getElementById(
+    'details-' + layerIndex + '-' + itemIndex
+  ).style.opacity = 1;
 };
 
 const handleItemLeave = (layerIndex, itemIndex, item) => {
-  // console.log(`Left item ${itemIndex} in layer ${layerIndex}`, item);
   document.getElementById(
     'details-' + layerIndex + '-' + itemIndex
-  ).style.display = 'none';
+  ).style.opacity = 0;
+  setTimeout(() => {
+    document.getElementById(
+      'details-' + layerIndex + '-' + itemIndex
+    ).style.display = 'none';
+  }, 300);
 };
 
-// Configurable variables
-// const itemWidth = window.innerWidth < 768 ? 300 : 600; // Width of each div
-// const itemHeight = window.innerWidth < 768 ? 125 : 350; // Height of each div
-let itemWidth = 600; // Width of each div
-let itemHeight = 350; // Height of each div
-const padding = 20; // Minimum space between items
-const centerSize = 500; // Size of center div
-const maxDistance = containerWidth / 2; // Maximum distance from center
+let itemWidth = 600;
+let itemHeight = 350;
+const padding = 20;
+const centerSize = 500;
+const maxDistance = containerWidth / 2;
 
 const positions = ref([]);
 
-// Generate a random position within a circular area around the center
 const generatePositionAroundCenter = () => {
   const centerX = containerWidth / 2;
   const centerY = containerHeight / 2;
 
-  // Generate random angle and distance
   const angle = Math.random() * 2 * Math.PI;
   const distance = Math.random() * maxDistance + (centerSize / 2 + padding);
 
-  // Convert polar coordinates to cartesian
   const x = centerX + Math.cos(angle) * distance;
   const y = centerY + Math.sin(angle) * distance;
 
@@ -385,9 +370,7 @@ const generatePositionAroundCenter = () => {
   };
 };
 
-// Check if a new position overlaps with existing positions or center div
 const hasOverlap = (newPos, existingPositions) => {
-  // Check overlap with center div
   const centerX = containerWidth / 2;
   const centerY = containerHeight / 2;
   const centerOverlap =
@@ -396,7 +379,6 @@ const hasOverlap = (newPos, existingPositions) => {
 
   if (centerOverlap) return true;
 
-  // Check overlap with other items
   return existingPositions.some((pos) => {
     const xOverlap = Math.abs(newPos.x - pos.x) < itemWidth + padding;
     const yOverlap = Math.abs(newPos.y - pos.y) < itemHeight + padding;
@@ -406,8 +388,6 @@ const hasOverlap = (newPos, existingPositions) => {
 
 const generatePositions = (numItems) => {
   const newPositions = [];
-
-  // console.log('Generating ' + numItems + ' positions.');
 
   for (let i = 0; i < numItems; i++) {
     let attempts = 0;
@@ -440,14 +420,12 @@ const generatePositions = (numItems) => {
 };
 
 onMounted(() => {
-  // Initialize inactivity timer
   startInactivityTimer();
 
-  itemWidth = window.innerWidth < 768 ? 300 : 600; // Width of each div
-  itemHeight = window.innerWidth < 768 ? 125 : 350; // Height of each div
+  itemWidth = window.innerWidth < 768 ? 300 : 600;
+  itemHeight = window.innerWidth < 768 ? 125 : 350;
 
   generatePositions(props.items.length);
-  // console.log(positions.value);
 
   let counter = 0;
 
@@ -473,7 +451,6 @@ onMounted(() => {
   });
 
   function animate() {
-    // Animate center layer
     const centerCurrentX = parseFloat(
       centerLayerStyle.transform.split('(')[1].split(',')[0]
     );
@@ -481,7 +458,7 @@ onMounted(() => {
       centerLayerStyle.transform.split(', ')[1].split(',')[0]
     );
 
-    const easingMultiplier = isResetting.value ? 0.5 : 0.05; // Faster easing when resetting
+    const easingMultiplier = isResetting.value ? 0.5 : 0.05;
 
     const centerNewX =
       centerCurrentX +
@@ -492,7 +469,6 @@ onMounted(() => {
 
     centerLayerStyle.transform = `translate3d(${centerNewX}px, ${centerNewY}px, 0px)`;
 
-    // Animate other layers
     layers.value.forEach((layer) => {
       const layerOffsetMultiplier = 1 + layer.index * 0.15;
 
@@ -503,7 +479,7 @@ onMounted(() => {
         layer.style.transform.split(', ')[1].split(',')[0]
       );
 
-      const easingFactor = isResetting.value ? 0.03 : 0.03; // Faster easing when resetting
+      const easingFactor = isResetting.value ? 0.03 : 0.03;
       const deltaX =
         (targetX.value + currentX) * -easingFactor * layerOffsetMultiplier;
       const deltaY =
@@ -526,16 +502,12 @@ onUnmounted(() => {
   clearTimeout(inactivityTimer);
 });
 
-// Mobile touch events
-
 const lastTouchPos = ref({ x: 0, y: 0 });
 const currentOffset = ref({ x: 0, y: 0 });
 const isDragging = ref(false);
 const interactionType = ref('none');
 
-// Replace existing touch handlers with these:
 const handleTouchStart = (e) => {
-  // console.log('Touch start');
   interactionType.value = 'touch';
   cancelAnimationFrame(animationFrameId);
   isDragging.value = true;
@@ -549,27 +521,22 @@ const handleTouchMove = (e) => {
   if (!isDragging.value) return;
   e.preventDefault();
 
-  // console.log('Touch move');
   isResetting.value = false;
 
   const touchX = e.touches[0].clientX;
   const touchY = e.touches[0].clientY;
 
-  // Calculate the distance moved
   const deltaX = touchX - lastTouchPos.value.x;
   const deltaY = touchY - lastTouchPos.value.y;
 
-  // Update the offset
   currentOffset.value = {
     x: currentOffset.value.x + deltaX,
     y: currentOffset.value.y + deltaY,
   };
 
-  // Update target values for inactivity reset
   targetX.value = currentOffset.value.x;
   targetY.value = currentOffset.value.y;
 
-  // Update layers directly based on current offset
   layers.value.forEach((layer) => {
     const layerOffsetMultiplier = 1 + layer.index * 0.15;
     const newX = currentOffset.value.x * layerOffsetMultiplier;
@@ -578,13 +545,11 @@ const handleTouchMove = (e) => {
     layer.style.transform = `translate3d(${newX}px, ${newY}px, 0px)`;
   });
 
-  // Update center layer
   const centerMultiplier = 0.02;
   centerLayerStyle.transform = `translate3d(${
     currentOffset.value.x * centerMultiplier
   }px, ${currentOffset.value.y * centerMultiplier}px, 0px)`;
 
-  // Save current position for next move
   lastTouchPos.value = {
     x: touchX,
     y: touchY,
@@ -592,16 +557,7 @@ const handleTouchMove = (e) => {
 };
 
 const handleTouchEnd = () => {
-  // console.log('Touch end');
   isDragging.value = false;
-};
-
-// TESTING
-
-const handleScroll = (e) => {
-  const el = e.target;
-  console.log(e, el);
-  el.style.transform = `scale(${1 - el.scrollTop / 1000})`;
 };
 </script>
 
@@ -638,7 +594,6 @@ const handleScroll = (e) => {
 }
 
 .title-cont h1:nth-child(1) {
-  /* margin-left: -10vw; */
   position: absolute;
   top: 0;
   left: 0;
@@ -697,6 +652,8 @@ const handleScroll = (e) => {
   padding: 1rem;
   padding-right: 15%;
   background-color: rgba(var(--bg), 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
 }
 
 .item-details-question {
@@ -710,7 +667,6 @@ const handleScroll = (e) => {
   position: absolute;
   width: 600px;
   height: 350px;
-  background-color: rgba(255, 0, 0, 0.5);
   pointer-events: auto;
   cursor: pointer;
   transform: translate(-50%, -50%);
@@ -760,18 +716,6 @@ const handleScroll = (e) => {
   padding: 1rem;
 }
 
-/* .focused-item-details h1 {
-  font-size: 3rem;
-  text-transform: uppercase;
-  font-family: 'Bigger Display', sans-serif;
-  margin-bottom: -1rem;
-}
-
-.focused-item-details h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-} */
-
 .focused-item-details h1 {
   font-size: 3rem;
   text-transform: uppercase;
@@ -809,20 +753,17 @@ const handleScroll = (e) => {
   transition: opacity 0.5s ease;
 }
 
-/* #blocker[style*='display: block'] {
-  opacity: 1;
-} */
-
 @media screen and (max-width: 768px) {
   .gallery-container {
     touch-action: none;
   }
   .title-cont {
-    max-width: 90vw;
-    height: 20vh;
+    max-width: 360px;
+    min-height: 150px;
+    height: 40vw;
   }
   .title-cont h1 {
-    font-size: 10vh;
+    font-size: 20vw;
   }
   .title-cont .controls {
     height: 6vh;
@@ -840,6 +781,17 @@ const handleScroll = (e) => {
   .item {
     width: 300px;
     height: 175px;
+  }
+
+  .focused-item-details h1 {
+    font-size: 2rem;
+    margin-bottom: 0;
+    line-height: 2rem;
+  }
+
+  .focused-item-details h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
   }
 }
 </style>

@@ -68,10 +68,14 @@
         <div class="selected-item-details">
           <h1>{{ selectedItem.title }}</h1>
           <h3>{{ selectedItem['authors-array'].join(', ') }}</h3>
-          <h2>Final Proposition</h2>
-          <p>{{ selectedItem['final-proposition'] }}</p>
-          <h2>Insights</h2>
-          <p>{{ selectedItem['insights'] }}</p>
+          <template v-if="selectedItem['final-proposition'].length > 0">
+            <h2>Final Proposition</h2>
+            <p>{{ selectedItem['final-proposition'] }}</p>
+          </template>
+          <template v-if="selectedItem['insights'].length > 0">
+            <h2>Insights</h2>
+            <p>{{ selectedItem['insights'] }}</p>
+          </template>
         </div>
       </div>
     </Teleport>
@@ -83,16 +87,6 @@
         {{ titleOpacity }}
         {{ isScrolledDown }}
         {{ devValue }}
-        <div
-          style="
-            width: 200px;
-            height: 200px;
-            background-color: red;
-            background-image: url('/thumbs/thumb_MINI_project_Moth_test2_Ma_Jing.mp4.jpg');
-            background-position: center;
-            background-size: cover;
-          "
-        ></div>
       </div>
     </DevOnly>
   </div>
@@ -175,7 +169,7 @@ const changeToGalleryView = () => {
 };
 </script>
 
-<style>
+<style scoped>
 .grid-comp-cont {
   height: 100vh;
   width: 100vw;
@@ -186,16 +180,21 @@ const changeToGalleryView = () => {
 
 .title-cont {
   position: fixed;
-  top: 0;
-  left: 2rem;
+  min-width: 380px;
+  max-width: 700px;
+  width: 90vw;
+  height: 50vh;
+  /* max-height: 50vh; */
+  top: 1rem;
+  left: 1rem;
   z-index: 10;
   pointer-events: none !important;
 }
 
 .title-cont > div {
   position: relative;
-  width: 40vw;
-  height: 50vh;
+  width: 100%;
+  height: 100%;
 }
 
 .title-cont > div h1 {
@@ -226,7 +225,7 @@ const changeToGalleryView = () => {
   gap: 1rem;
   position: absolute;
   left: 0;
-  top: -1.5rem;
+  top: -2rem;
   padding: 1rem 0;
   height: 6rem;
   pointer-events: none;
@@ -248,7 +247,6 @@ const changeToGalleryView = () => {
 }
 
 .grid-item-cont {
-  background-color: red;
   aspect-ratio: 4/5;
   background-position: center;
   background-size: cover;
@@ -266,6 +264,12 @@ const changeToGalleryView = () => {
   bottom: 0;
   opacity: 0;
   transition: all 0.3s ease-out;
+  background: rgba(var(--bg), 0.7);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .grid-item-details h1 {
@@ -369,11 +373,14 @@ const changeToGalleryView = () => {
 @media screen and (max-width: 768px) {
   .title-cont > div {
     position: relative;
-    width: 90vw;
+    max-width: 320px;
+    min-width: 220px;
+    /* width: 90vw; */
     height: 25vh;
+    margin-top: 2rem;
   }
 
-  .title-cont h1 {
+  .title-cont > div h1 {
     font-size: 10vh;
   }
 
@@ -385,9 +392,17 @@ const changeToGalleryView = () => {
     margin-left: 10rem;
   }
 
+  .title-cont .controls {
+    top: -3.5rem;
+  }
+
   .grid-container {
-    padding-top: 25vh;
+    padding-top: 30vh;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .grid-item-details {
+    display: none;
   }
 
   .grid-item-details h1 {
@@ -405,7 +420,14 @@ const changeToGalleryView = () => {
 
   .selected-item-details h1 {
     font-size: 2rem;
-    margin-bottom: -0.5rem;
+    line-height: 2rem;
+    margin-bottom: 0;
+  }
+
+  .selected-item-details h2 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
   }
 
   .selected-item-details h3 {

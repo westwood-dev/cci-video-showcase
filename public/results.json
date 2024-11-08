@@ -2,7 +2,6 @@
   {
     "ID": "1",
     "Completion time": "2024-11-08 00:51:50",
-
     "final-proposition": "We allowed our participants to create their own colour palettes through our use of Arduino and Touchdesigner. We played them different set frequencies and allowed them to choose which colour they associated with this note. By the end, they had a colour palette and we also outputted them a 'light show' screen with their different colours. ",
     "insights": "This project showed us how different peoples associations with colour and sound are. Although we did not get the chance to test it out on many people, the colour palettes seemed to be quite varied. It would be interesting to compare this data on a larger scale. It was nice to create a personalised experience, we wondered how we could take this further in the future by taking in sound as an input instead. In the future, we would also have to make it much clearer on how to interact with our project. ",
     "title": "Colour associations, which vary among individuals, can enhance our personal connection with sound/music.",
@@ -14,7 +13,6 @@
   {
     "ID": "2",
     "Completion time": "2024-11-08 04:41:30",
-
     "final-proposition": "We produced an art piece that responds to the user's heart rate in real time. Using TouchDesigner, Arduino and a heart rate sensor. The user puts on the sensor and TouchDesigner switches between two visual states, \"anxious\" and \"calm\" corresponding to the user's readings. ",
     "insights": "We all had an opportunity to work with TouchDesigner for the first time. Very fun tool and some of us aim to continue using it in future projects.",
     "title": "The colour, intensity, and saturation of light significantly influence mood, nervous system activity, and heart rate by affecting hormonal responses, neural activity, and circadian rhythms.  This was the key premise in for our concept moving forward. We were interested in how light can induce certain physical responses. We aimed to determine how certain biological markers such as heart rate were influenced by light and how they could act as an input to create a feedback loop.",
@@ -26,7 +24,6 @@
   {
     "ID": "3",
     "Completion time": "2024-11-08 11:24:43",
-
     "final-proposition": "We made a pair of Glasses that blinds the user in very low and very high light intensities. The idea is an interactive art piece where the audience members wear glasses and walk into different rooms, stimulating different environments with different light intensities. The aim is to make the audience more conscious of both the necessity of light and the effects of really harsh light and to try and find a balance between the two to keep the glasses open and see-through.",
     "insights": "Through our research, we realised that there is so much more about the types of light that we could not yet explore in our prototype. We wanted to further our project with varying wavelengths of light so users could also become more aware of the type of light they are being exposed to (which we felt was information that would be much more new for the audience). We also learnt a lot about material, as our initial research in material delved into photochromatic glasses and the physics behind their mechanism.",
     "title": "Hypothesis - Experiencing varying light intensities through interactive feedback will increase users\u2019 understanding of the importance of balanced light exposure, encouraging mindful habits in regulating their light environment for optimal health and well-being.",
@@ -42,7 +39,6 @@
   {
     "ID": "4",
     "Completion time": "2024-11-08 11:33:01",
-
     "final-proposition": "We used a GSR sensor to detect levels of stress, producing a colour light mapped to certain colours researched, to counteract the levels of stress of a subject after coming home for example from a busy day wanting to relax. Our light helps restore our bodies circadian rhythm which the city disrupts so much. ",
     "insights": "For the future, we would need to programme the Wiz App which comes with the colour changing light bulb we used, which is possible as it is open source. From this experiment we had to just envision our final outcome we were not able to achieve our end goal yet. Still having a final outcome did mean that we were able to see how it would manifest where we came across many things to think about, when filming. ",
     "title": "Programming and designing a light which rebalances body stress levels via information picked up from bio marker sensors, aiming to relax the subject through colour light. ",
@@ -58,7 +54,6 @@
   {
     "ID": "5",
     "Completion time": "2024-11-08 11:53:42",
-
     "final-proposition": "A breadboard sized system utilising servo motors and LDRs to stretch and warp a piece of fabric, creating an abstracted form, which in turn affects the system and the way it percieves light. This was designed in mind to be modular and extendable.",
     "insights": "We began to think about electronic programmes not as a set of binary rules but as a cyclical system where emergence is the main desirable property in abstract experiments such as ours when studying behaviour. ",
     "title": "Creating a modular scaleable system that reacts to light as if it has a sleep cycle that also in some way reacts to itself, turning into a self sustainable system.",
@@ -74,7 +69,6 @@
   {
     "ID": "6",
     "Completion time": "2024-11-08 12:35:35",
-
     "final-proposition": "Each video cut transitions the viewer into a new \"room,\" defined by unique coloured lighting that shifts subtly across the subject\u2019s face. The lighting in each room is designed to explore how colour and light affect our perception of identity, mood, and space.\n\nIn each room, a different colour casts shadows and highlights on different parts of the subject\u2019s face, creating an almost surreal effect. As the colours change, they reshape the contours, mood, and atmosphere around the person, effectively transforming how they\u2019re perceived. This emphasises the idea that lighting\u2014and specifically coloured lighting\u2014has a profound impact on how we see ourselves and others.\n",
     "insights": "Time management provided us with valuable insights, and looking back, we realise that with better planning, we could have experimented even more by  planning to incorporate surveys from others into our research to deepen our findings. This experience has also given us a solid understanding of colour theory, especially how colour can seriously alter our perceptions. It was exciting to apply skills from class, like computational techniques, and to watch what we learned evolve and shape our creative ideas into art ",
     "title": " we aimed to explore how the perception of self is altered when exploring different environmental factors using visible light.",
@@ -86,7 +80,6 @@
   {
     "ID": "7",
     "Completion time": "2024-11-08 13:25:59",
-
     "final-proposition": "We produced a scaled-down model of a room, in which there are a variety of lenses, mirrors and colour filters. There is one light source. Its perceived radiance can be manipulated and altered by the user, who can adjust the rotational angles of each component.\nTo execute this idea, we modelled and 3D-printed unique attachments for servo motors, which fit custom-cut acrylic pieces. We stained the acrylic to add colour and also used mirror acrylic. The servo attachments also fit biconvex lenses, which we sourced.\nWe strategically created a floor plan which gave way to multiple permutations and combinations of light-constructing methods. We attached the servos to potentiometers, giving the user precise control over the components. We housed the electronics outside of the scaled-down model for practicality, but in a realised version, the user would walk through the room, changing each dial at each individual motor.\nThe idea of actively moving through the room gives way to embodied engagement with the environment. Not only does a user need to make physical efforts to construct environmental changes but their perception can also be changed due to simply standing in different locations.",
     "insights": " We gained multiple technical insights and learned the importance of accuracy in this project. We learned how to measure and match our component specifications, creating a suitable universal 3D model. We learned the process of 3D printing. This also taught us the importance of time management and allowing room to accommodate unforeseen events (e.g. 50% of our 3D prints failed).\nWe also gained insights into group dynamics and the importance of roles within groups. We learned how to communicate effectively with each other and work as a team.",
     "title": "By allowing light to interact with mirrors and colour filters, we aim to show how perception is shaped not by passive observation but by active embodied engagement with the environment. This means that the user has a physical input into constructing their environment.",
@@ -98,7 +91,6 @@
   {
     "ID": "8",
     "Completion time": "2024-11-08 13:36:40",
-
     "final-proposition": "The final proposition is an interactive device that translates heartbeats into LED light patterns, raising awareness of energy use and light pollution by connecting personal rhythms with environmental impact.",
     "insights": "The experiment also brings an idea of future interactive equipment. By combining the interaction between heartbeat and light, it shows the potential of the device in enhancing the connection between people and the environment. This makes us think that future interactive devices can not only feedback physiological data, but also show our impact on the environment in real time. At the same time, we also reflected on the choice of materials and functions, and considered how to reduce resource consumption under the premise of maintaining the effect of the device to achieve a more sustainable design.",
     "title": "Concept: \u201cThis project uses heart rate data to control LED lights, creating an interactive experience that connects personal biological rhythms to environmental awareness, highlighting energy consumption and the impact of light pollution on ecosystems.\u201d",
@@ -114,7 +106,6 @@
   {
     "ID": "9",
     "Completion time": "2024-11-08 14:06:40",
-
     "final-proposition": "In a dark environment, a small white paper moth flaps its wings slowly, as more light shines on it, its wings flutter faster.\n\nusing LDR to input light level and a servo motor as output to animate the wings. When the light level increases, the speed of the motor turning would increase",
     "insights": "within the time we had, it was difficult to write code for more than one or two functions of the product, initially we wanted to try and make the moth move towards the light, however wiring two ldr inputs (for direction sensing), two dc motor outputs (for wheels), and building a housing and wheels for this was a bit ambitious,  to overcome this we instead fabricated an individual \u201cmoth\u201d that could be replicated with all of our arduinos to create multiple moths",
     "title": "When asked about our relationship to light, we considered the sensitivity that both humans and non-humans have to the increasing of artificial light sources that flood our lives.  An obvious example of the effect of artificial light on non-humans is the frenzied behaviour of insects, specifically moths which are drawn to streetlamps and the lights in our windows and display unusual flying patterns and behaviour.  We hypothesized that we could emulate this behaviour of increased activity in relation to increased levels of light using physical computing.",
@@ -128,7 +119,6 @@
   {
     "ID": "10",
     "Completion time": "2024-11-08 14:19:12",
-
     "final-proposition": "We used Arduino and an ultrasonic sensor for the interactive part of the project. We used a 3D model and javascript to make the visuals and connected it to the Arduino so the shapes would change colour and texture when interacted with.\n\nThe visuals were two balls, one representing people with colour vision and the other representing different types of colour blindness. Our project was on a smaller scale, displayed in a little black box. The box represents our vision of making this on a bigger scale where you could projection map a whole room and make interactions that highlight the difficulty and emotions that follow along with colourblindness and colours.",
     "insights": "We learned that a lot of aspects within our lives are influenced by culture and the environment we live in, our understanding of colour varies from one community to another. This really made us think about what other aspects of our lives that we think are learnt instead of something that we just observe.",
     "title": "How has the association between light and colour affected the way humans perceive emotions?",
@@ -144,7 +134,6 @@
   {
     "ID": "12",
     "Completion time": "2024-11-08 14:31:58",
-
     "final-proposition": "In this art installation, visitors enter a room filled with moving light patterns projected on the walls, which create an immersive and overstimulating experience. A large mirror at one end of the room reflects the projections, adding to the sense of disorientation and creating a seemingly endless space.\n\nVisitors must find their way through this visually intense environment to a red circle in the center of the room. When they step inside the circle, the projected animations stop, providing an instant shift from sensory overload to calmness.",
     "insights": "- The intense, moving light patterns and mirrored reflections create overstimulation, encouraging visitors to move quickly\n- The setup encourages curiosity\u2014visitors must navigate the space, interact with the environment, and discover that stepping into the circle has an impact.\n- By allowing visitors to \u201cswitch off\u201d the projections, the installation encourages awareness of sensory limits and the power of choice in handling overstimulation.",
     "title": "The project explores how overstimulation from intense light and patterns of light can lead to disorientation and visual effects such as afterimages and visual persistence. These effects reveal how our brains process light stimuli and how visual overstimulation can alter perception.",
@@ -160,7 +149,6 @@
   {
     "ID": "13",
     "Completion time": "2024-11-08 15:30:23",
-
     "final-proposition": "We created a small scale prototype of an installation which included a grid axis across the floor of our 'venue' using copper tape, connected to an Arduino board with an MPR121. As the participants (the little figures in our demo) would move around the copper grid, the LED above them would light up. \nAs well as the lights turning on, we created a synth inspired by the album \u2018Plantasia\u2019 which was created for houseplants due to the specific frequency of the sound being found to help the plants grow. With the sound work in the background, we introduced another sense to further immerse our audience in the reactive light installation dictated by their choices.\n",
     "insights": "We learnt about the important of prototyping and how it allows ideas to manifest, even if the initial prototype ends up being completely different from the final one. We learnt how assigning roles allows us to work efficiently through ordeals, and persevere through to a complete and positive final outcome.",
     "title": "Creating a controlled environment with little stimuli will create a meditative space for the audience to reflect; re-grounding with their surroundings and understanding our stance among other organisms through a cognitive change.",
@@ -176,7 +164,6 @@
   {
     "ID": "14",
     "Completion time": "2024-11-08 16:07:54",
-
     "final-proposition": "We produced a kinetic lamp that takes the shape of a lantern to be suspended in a home where it facilitates a slowing down by reproducing the rhythm of the human breath. Furthermore its warm light that naturally dims and lights up the room as the lamp opens and closes creates a soothing environment that mimics the effects of a fireplace. It is meant to be used to facilitate meditative practices.\n",
     "insights": "A main insight of our experiment was to prioritze the technical and mechanical functioning of our project and test out raw prototypes earlier on. We also would have saved a lot of time if we had decided on an idea at the end of the first week, since it was very challenging to realize our final concept in just the second week.",
     "title": "We aim to explore how a kinetic lamp for the home can be used to create a relaxing environment whilst mimicking the human breathing patterns thus encouraging slow breathing for meditative practices.",
@@ -186,13 +173,12 @@
       "Rhyan Holder (Designer)",
       "Friedrich M\u00fcller (Theorist)"
     ],
-    "videoURL": "/videos/compressed_MINI_PROJECT_light_Friedrich_Müller.mov",
+    "videoURL": "/videos/compressed_MINI_PROJECT_light_Friedrich_Müller.mp4",
     "thumbURL": "/thumbs/thumb_MINI_PROJECT_light_Friedrich_Müller.mov.jpg"
   },
   {
     "ID": "15",
     "Completion time": "2024-11-08 16:10:29",
-
     "final-proposition": "Deconstruction and reconstruction of light: As a basic element of nature, light is decomposed into controllable code sequences in this installation. The presence and movements of the audience are captured and converted into visual light signals through algorithms, thus redefining the way light is presented.\nSymbol of human-machine interaction: The audience's movements trigger the dynamic changes of the LED light board, reflecting the synergy between human behavior and machine algorithms. The installation encourages the audience to explore different forms of light through their own movements, reflecting the process of co-creation between humans and machines.",
     "insights": "Breaking down uncontrollable light into controllable code sequences is really cool, but there are still many technical challenges that I need to further resolve.",
     "title": "This installation project deconstructs light as a material element and achieves interaction with the audience through code transformation and reconstruction. By capturing the audience's movements through TouchDesigner, the LED light panels flicker and change in front of the audience, forming a dynamic visual feedback, symbolizing the collaborative and symbiotic relationship between humans and digital technology.",
@@ -206,7 +192,6 @@
   {
     "ID": "16",
     "Completion time": "2024-11-08 16:18:30",
-
     "final-proposition": "We produced ultrasonic sensor, servo motored lights that respond to movement. Our 'turbine hall' idea being an interactive space where a variety of sensors and triggers, wake up our lights through human motion. We wanted to observe this behaviour in a real life space with audio. ",
     "insights": "I think working in such a small time period, with new peers really forces you to prototype and work in a productive, vigorous way. This project has solidified our understanding and reinforced our knowledge of emergent behaviour, and physical computing. Through this experiment, we explored the psychology of lighting and questioned and explored ways of manipulating behaviour that we would not have been able to unfurl without a fast physical making process.",
     "title": "Interactive light variation can be used to control motion in emergent human behaviour.",
@@ -222,7 +207,6 @@
   {
     "ID": "17",
     "Completion time": "2024-11-08 16:24:37",
-
     "final-proposition": "In our project, we\u2019ve experimented with everyday tools and objects that rely on different forms of light, swapping their uses and outputs to disrupt their normal functions. By altering how these tools function, we force users to confront a new reality and question their habituation to these everyday objects. Normally, these tools become invisible in our lives, functioning as seamless interfaces through which we access the world. But when their outputs are changed\u2014whether it\u2019s light, heat, or sound\u2014it disrupts our automatic behaviours and makes us aware of how deeply integrated technology is in our perception of reality. Through this disruption, we open up a space for new forms of interaction, allowing us to rethink how we experience the world and our relationship with technology.",
     "insights": "The making process was a matter of dismantling a plastic shell of a respective electronic device to discover a very simple circuit board and switch interaction that outside of their housing all look very similar. Our maquettes are simple but very well convey the functions of these soul swapped items. A fire gun, heat lamp controller and remote control nail lamp. \nThe main task was hijacking the barcode scanner internals to operate as a key reader to transmit specific IR commands to a television. we used a python script that would take the barcode information, speak to an Arduino connected to the computer that would then encode and transmit that data through an IR LED - this process was far simpler on paper. IR encoding and receiving, python and Arduino interfacing, busy modems and serial ports all became very frustrating stop signs in the making process. In future,  a scanner that interfaces directly with the Arduino with a USB serial connection will skip the middle manning of a computer and simplify the process (which itself is an encoding of a message through barcode, decoded and sent through two scripts, recoded and transmitted through an IR to be received by a TV - a lot of jumping through windows when we can just use the door).",
     "title": "Technologies are extensions of our bodies, shaping how we experience space, time, and even agency. When something unexpected happens, it\u2019s like a glitch in the system\u2014it challenges our assumptions and recalibrates our understanding of how we interact with the world. This break in the feedback loop forces us to reconsider how we engage with technology and highlights how our agency is enmeshed in complex networks, where it becomes harder to separate our actions from the tools we use.",
@@ -234,7 +218,6 @@
   {
     "ID": "18",
     "Completion time": "2024-11-08 16:27:49",
-
     "final-proposition": "In response to this, we made a mini-room containing a bed and bright lights (neopixels) above it. Underneath the bed's pillow is a touch sensor. When the pillow is touched, the LEDs turn on, stopping the bedroom from becoming a place of rest. This model intends to represent environments where light is intentionally used to keep us active, but in a more isolated, personal way.",
     "insights": "1) Rapid prototyping made it easier to communicate our ideas and keep our concept executable. Modelling with Blender, cardboard and foamboard meant that we could edit models without deconstructing everything.\n\n2) Making multiple iterations helped us understand the importance of testing different materials with Arduino components because of they can drastically change the output.\n",
     "title": "The relationship we chose to explore was a negative one, where light is a sensory device used to keep you alert and productive. This is usually a good thing, but in a society that places heavy emphasis on work over health, this can also create negative experiences.",
@@ -250,7 +233,6 @@
   {
     "ID": "20",
     "Completion time": "2024-11-08 16:37:56",
-
     "final-proposition": "After exploring various scenarios and materials, we decided to create a multi sensor input table by using copper tape and a capacitive touch sensor, allowing for 12 unique contact points that take part in our puzzle. As these sensors are touched they complete levels of the puzzle, motivated by light displays. Per each level of the puzzle, between 2 and 4 contact points are in play and the participant\u2019s are required to locate and touch to complete the level.",
     "insights": "We observed our results by comparing prediction charts with sensor state outputs, analysing how individual psychology emerged into group behaviour. This approach highlighted the nuances of personal interaction evolving into collective dynamics, offering insights into how individual actions influenced, and were shaped by, the group\u2019s collaborative effort.",
     "title": "Our study examines how interactive light experiences shape participants\u2019 spatial awareness and foster unity. Grounded in social constructionism, we explore the emerging behaviour of individual psychology into a group behaviour. We are able to assess through collected data how light - beyond personal perception - becomes a shared, socially anticipated environment. Participants\u2019 actions collectively \u201clight up\u201d the space, maximising environmental awareness and engagement. By requiring collaborative interaction to activate light displays, we hypothesise that light serves as both guide and motivator, reshaping the environment and reinforcing social cohesion as participants navigate and interact within the space. ",
@@ -266,7 +248,6 @@
   {
     "ID": "21",
     "Completion time": "2024-11-08 16:40:19",
-
     "final-proposition": "Final Work:\nFeel the Colours of the Knobs\n\nIn the previous experiment, we discovered that people don\u2019t share a common agree on the relationship on texture and colour(light). Also, different people have distinct perception on the colour of texture, especially people with synesthesia. In the final exhibition, the viewers were asked to walk in one by one to interact with the installation.\nBy touching, comparing, and turning the knobs, they picked the colour they thought about when interacting with the texture. \nThe colour range of each knob was determined in the previous experiment. We hope that this simple reaction can make people think about how we perceive the light, and how others\u2019 perception is so different to ours.",
     "insights": "Understanding that a stimulus could mean very different things to different people is important to design as we have to be able to pick the right colour and texture for our product.",
     "title": "Can we feel light in senses other than vision?\u00a0In this experiments, we explored our tactile relationship with light.\u00a0\u00a0 People have some preconceived ideas about what colours some objects are, for example danger being red, grass being green, sky being blue despite those not always being the true colours.\u00a0But, given an abstract texture stimulus, will people agree on what colour should be associated with it? Or will our perceptions of colour differ and be a personal thing?\u00a0 Hypothesis:\u00a0 We believe that there will be a correlation between the colour choices and the texture stimulus and that people will agree on the correct(same) colour.\u00a0",
@@ -281,7 +262,6 @@
   {
     "ID": "22",
     "Completion time": "2024-11-08 16:44:33",
-
     "final-proposition": "The goal of our project is to create a sense of wonder exploration, and introspection. We produced a virtual reality experience, we felt this type of layout for this experience was necessary to the effect we were trying to achieve. The first person experience in virtual reality already works to engage yet disorientate the viewer and we felt this worked best for the concepts we were trying to explore.",
     "insights": "We realised light and time have a lot more overlapping concepts than initially thought and this was super helpful to think about for doing a viewer centred piece for us.",
     "title": "Our project wanted to look at a virtual reality experience which was designed to immerse users in a dreamlike, otherworldly environment where time and reality blend into each other. We wanted to see how we could place the viewers into an unfamiliar realm in which their perception of time becomes warped. The primary objective is to explore and interact with mysterious beams of light, aiming to put viewers in a trance like state and lose track of time.",
@@ -297,9 +277,8 @@
   {
     "ID": "23",
     "Completion time": "2024-11-08 16:46:44",
-
-    "final-proposition": "In a dark environment, a small white paper moth flaps its wings slowly, as more light shines on it, its wings flutter faster.\n\nusing LDR to input light level and a servo motor as output to animate the wings. When the light level increases, the speed of the motor turning would increase accordingly",
-    "insights": "within the time we had, it was difficult to write code for more than one or two functions of the product, initially we wanted to try and make the moth move towards the light, however wiring two ldr inputs (for direction sensing), two dc motor outputs (for wheels), and building a housing and wheels for this was a bit ambitious,  to overcome this we instead fabricated an individual \u201cmoth\u201d that could be replicated with all of our arduinos to create multiple moths",
+    "final-proposition": "In a dark environment, a moth flaps its wings slowly, as the light level increases, its wings flap faster. Using the LDR sensor to input the light level and a servo motor as output to animate the wings. As the light level increases, the speed of the motor increases accordingly, this behaviour works in association to the observed frenzied behaviour of insects and research into the unusual behaviour that emerges when in proximity to artificial light.",
+    "insights": "I found that within the time we had, it was difficult to write code for more than one or two functions of the product, initially I wanted to try and make the moth move towards the light, however wiring two LDR inputs (for direction sensing), two dc motor outputs (for wheels), and building a housing and wheels for this was a bit ambitious, to overcome this we instead fabricated an individual “moth” that could be replicated with all of our arduinos to create multiple moths. I also found that moving two wings with one motor was a challenge since I only had access to one servo motor, when I was fabricating my model, however my teammate was able to come up with a solution using wire.",
     "title": "When asked about our relationship to light, we considered the sensitivity that both humans and non-humans have to the increasing of artificial light sources that flood our lives.  An obvious example of the effect of artificial light on non-humans is the frenzied behaviour of insects, specifically moths which are drawn to streetlamps and the lights in our windows and display unusual flying patterns and behaviour.  We hypothesized that we could emulate this behaviour of increased activity in relation to increased levels of light using physical computing.",
     "authors": "Naomi Clough (Theorist),  JingMa (Designer),  Wai Ka Yau (Maker)",
     "authors-array": [
@@ -313,7 +292,6 @@
   {
     "ID": "24",
     "Completion time": "2024-11-08 16:52:26",
-
     "final-proposition": "Our final proposition is a combination of two forms of prototyping around how light influences our perception and experience of home. The first is centred around speculative design and projecting the home of the future using AI. The maker experimented with different ways of building an immersive sensory experience through LED prototyping, audio input and projections.",
     "insights": "- the use of a state machine in code vs just loops as when moving between modes we first got stuck in while loops, realising we could use a switch statement was very helpful\n- the impact of different colours on our health was interesting, particularly that it is best to sleep in red light \n- the importance of prototyping in a project\n- looking at what the future of lighting could be with globalisation ",
     "title": "How lighting and colours influence our physical and mental health. By researching the different ways lighting is already used for medical and recreational purposes, we wanted to see how this could be integrated into our day-to-day routines and homes.",
@@ -325,7 +303,6 @@
   {
     "ID": "25",
     "Completion time": "2024-11-08 16:52:29",
-
     "final-proposition": "We have set up an environment where only one light is illuminated at a time and dims as they approach, you can observe whether individuals continue to move toward the lit area, indicating a natural inclination to seek light when in darkness. Using 2 ultrasonic sensors coded to dim as someone gets closer. We would have liked to make this larger scale and place in an empty room to better observe people reaction to the light and dark. ",
     "insights": "Our project was really valuable in understanding the depth of our relation to light, we initially found that there were so many pathways we could have gone down but where able to make a decision. We also were surprised by how quickly we were able to interate through coding, as well as prototyping, really helpful in gaining an understanding of how to move forward. I would love to have some more time to refine these ideas and maybe scale them up. ",
     "title": "If a person is placed in a dark room with alternating dimming light sources, then they will instinctively move toward the illuminated light source, driven by an innate attraction to light as a perceived safe area in the darkness. This hypothesis builds on the concept that humans may be naturally drawn to light in dark settings, possibly as a remnant of evolutionary survival mechanisms.",
@@ -337,7 +314,6 @@
   {
     "ID": "26",
     "Completion time": "2024-11-08 16:59:07",
-
     "final-proposition": "We produced a board that once a specific light is shown, this would light up the respected LED, effectively transferring the light, to bring the plant to life by spiraling upwards. Light towards the red end of the spectrum has a longer wavelength and lower energy as compared to the violet end of the spectrum, which will impact the plant.",
     "insights": "Overall, our group worked cohesively and productively by considering time  constraints and vast difference of opinions.\n\nWe formed a suitable rudiment which implemented all of our findings; no one\u2019s concept was left out, rather built upon to strengthen our foundation.\n\nComing from different majors, it was insightful to collaborate with an array of perspectives within the creative realm, which grew our knowledge and communication.",
     "title": "Our concept/hypothesis included the focus on bioluminescence; by combining colour theory and light intensity which alters our relationship with light. This branches to our question, how does bioluminescence use different coloured lights to alter behaviour in surrounding organisms?",
@@ -349,5 +325,27 @@
     ],
     "videoURL": "/videos/compressed_Group-20_presentation-link_Riyash_Lughmani.mov",
     "thumbURL": "/thumbs/thumb_Group-20_presentation-link_Riyash_Lughmani.mov.jpg"
+  },
+  {
+    "ID": "27",
+    "Completion time": "",
+    "final-proposition": "",
+    "insights": "",
+    "title": "",
+    "authors": "Ansika, Ariane, Imogen",
+    "authors-array": ["Ansika", "Ariane", "Imogen"],
+    "videoURL": "/videos/compressed_841642FB-1FC1-4075-8C97-79715EEA5364.mp4",
+    "thumbURL": "/thumbs/thumb_841642FB-1FC1-4075-8C97-79715EEA5364.mp4.jpg"
+  },
+  {
+    "ID": "28",
+    "Completion time": "",
+    "final-proposition": "Employing TouchDesigner, an Arduino board, and an ultrasonic sensor, we explored how to tackle this question in a physical manner. The concept of our outcome was to essentially create a small interactive space where the user is compelled to approach a sensor and monitor in attempts to detect the human emotion portrayed in an AI-generate image on the monitor. As the user’s proximity to the sensor fluctuate, the projected image will morph from lesser distorted (far proximity) to more distorted (close proximity). The purpose of this interactive experience is to provoke the user to explore at what point a digital interface hinders their innate ability to detect human emotion.",
+    "insights": "Throughout the duration of the brief, we gained insight on how to visualize data from an ultrasonic sensor can be utilized in a physical, interactive way. We also learned how to connect Arduino to TouchDesigner, expanding the possibilities of our physical computing. Engaging in the prototype phase of this project was very helpful - it gave insight on why prototyping is so necessary in efficiently executing similar projects in the future and for being able to reach a final outcome without exerting excess time and resources to do so.",
+    "title": "DISTORTED EMOTION is a mini-project in response to the brief, What is our relationship to Light. To us, light is an abstract concept with multiple denotations and connotations. Our project focuses on light’s connotation of perception and truth. Our project explores how these themes act in a digital world: How might a digital interface impede our ability to recognize a human trait, such as a facial expression or emotion?",
+    "authors": "Anna (Designer), Rory (Theorist), Jack (Maker)",
+    "authors-array": ["Anna (Designer)", "Rory (Theorist)", "Jack (Maker)"],
+    "videoURL": "/videos/compressed_DE1.mp4",
+    "thumbURL": "/thumbs/thumb_DE1.mp4.jpg"
   }
 ]
