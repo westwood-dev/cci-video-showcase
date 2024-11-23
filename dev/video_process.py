@@ -6,6 +6,9 @@ import argparse
 def compress_video(input_path, output_path):
   """Compress video using ffmpeg with specified parameters."""
   try:
+    # Ensure the output file has an .mp4 extension
+    if not str(output_path).endswith('.mp4'):
+      output_path = str(output_path) + '.mp4'
     cmd = [
       'ffmpeg',
       '-i', str(input_path),

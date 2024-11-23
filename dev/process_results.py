@@ -59,8 +59,9 @@ def xlsx_to_json(xlsx_file, json_file):
         entry['title'] = entry["Describe your concept/hypothesis (max 100 words)"]
         entry['authors'] = entry['Group Members and roles [Format: Murad (Theorist), Irti (Designer), Jen (Maker)]']
         entry['authors-array'] = parse_authors(entry['authors'])
-        entry['videoURL'] = re.sub(r'.*/', '/videos/compressed_', entry['Submit your final video presentation'])
+        entry['videoURL'] = re.sub(r'.*/', '/videos/compressed_', entry['Submit your final video presentation (Only submit a PDF if you are linking to your video in an external cloud folder - e.g. Google Drive, OneDrive or Dropbox)'])
         entry['videoURL'] = re.sub(r'%20', '_', entry['videoURL'])
+        entry['videoURL'] = re.sub(r'\.\w+$', '.mp4', entry['videoURL'])  # Ensure .mp4 extension
         entry['thumbURL'] = re.sub(r'.*/compressed_', '/thumbs/thumb_', entry['videoURL']) + '.jpg'
 
         refined_data.append(entry)

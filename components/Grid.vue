@@ -2,8 +2,8 @@
   <div class="grid-comp-cont bgColour" @scroll="handleScroll">
     <div class="title-cont textColour" :style="{ opacity: titleOpacity }">
       <div>
-        <h1>brief one</h1>
-        <h1>"light"</h1>
+        <h1>brief {{ data.briefNumber }}</h1>
+        <h1>"{{ data.title }}"</h1>
         <div class="controls">
           <ThemeChanger class="control" />
           <button class="control textColour" @click="changeToGalleryView">
@@ -14,13 +14,13 @@
     </div>
     <div class="grid-container bgColour">
       <div
-        v-for="(item, index) in props.items"
+        v-for="(item, index) in props.data.items"
         :key="index"
         class="grid-item-cont bgColour"
         :style="{
           backgroundImage: `url(${item.thumbURL})`,
         }"
-        @click="handleItemClick(item, $event)"
+        @click="handleItemClick(item)"
       >
         <div class="grid-item-details">
           <h1 class="textColour">
@@ -59,6 +59,7 @@
           <Icon name="material-symbols:close" size="2rem" />
         </div>
         <video
+          v-if="selectedItem.videoURL!.length > 0"
           :src="selectedItem.videoURL || '@/assets/video/000.mp4'"
           muted
           autoplay
@@ -92,38 +93,47 @@
   </div>
 </template>
 
-<script setup>
-const props = defineProps({
-  items: {
-    type: Array,
-    required: true,
-  },
-});
+<script setup lang="ts">
+import type { IProject, IBrief } from '@/types/brief.type';
+
+const props = defineProps<{
+  data: IBrief;
+}>();
 
 const isScrolledDown = ref(false);
 const titleOpacity = ref(1);
 
-const handleScroll = (e) => {
+const handleScroll = (e: Event) => {
   const scrollTop = e.target?.scrollTop || 0;
-  // const percentScroll = 1 - scrollTop / (window.innerHeight / 2);
 
-  const percentScroll =
-    1 -
-    scrollTop /
-      parseFloat(
-        window
-          .getComputedStyle(document.querySelector('.grid-container'))
-          .getPropertyValue('padding-top')
-          .replace('px', '')
-      );
+  const gridContainer = document.querySelector(
+    '.grid-container'
+  ) as HTMLElement;
+  const percentScroll = gridContainer
+    ? 1 -
+      scrollTop /
+        parseFloat(
+          window
+            .getComputedStyle(gridContainer)
+            .getPropertyValue('padding-top')
+            .replace('px', '')
+        )
+    : 1;
   titleOpacity.value = percentScroll >= 0 ? percentScroll : 0;
 };
 
-const selectedItem = ref(null);
+const selectedItem = ref<{
+  animating?: boolean;
+  videoURL?: string;
+  title?: string;
+  'authors-array'?: string[];
+  'final-proposition'?: string;
+  insights?: string;
+} | null>(null);
 const clonedElement = ref(null);
 const selectedItemStyle = ref({});
 
-const handleItemClick = (item) => {
+const handleItemClick = (item: IProject) => {
   if (selectedItem.value === item) {
     removeClone();
     selectedItem.value = null;
@@ -247,7 +257,7 @@ const changeToGalleryView = () => {
 }
 
 .grid-item-cont {
-  aspect-ratio: 4/5;
+  aspect-ratio: 16/9;
   background-position: center;
   background-size: cover;
   position: relative;

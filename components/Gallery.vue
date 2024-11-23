@@ -10,8 +10,8 @@
   >
     <div class="gallery-layer-0" :style="centerLayerStyle">
       <div class="title-cont">
-        <h1 class="textColour">Brief one</h1>
-        <h1 class="textColour">"light"</h1>
+        <h1 class="textColour">Brief {{ data.briefNumber }}</h1>
+        <h1 class="textColour">"{{ data.title }}"</h1>
         <div class="controls">
           <button class="control textColour" @click="resetPosition">
             Reset
@@ -136,28 +136,27 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, onMounted, onUnmounted } from 'vue';
 
-const props = defineProps({
-  items: {
-    type: Array,
-    required: true,
-  },
-});
+import type { IProject, IBrief } from '@/types/brief.type';
+
+const props = defineProps<{
+  data: IBrief;
+}>();
 
 let containerWidth =
-  Math.ceil(Math.sqrt(props.items.length)) * 1000 ||
-  100 * props.items.length * 2 ||
+  Math.ceil(Math.sqrt(props.data.items.length)) * 1000 ||
+  100 * props.data.items.length * 2 ||
   2700;
 let containerHeight = containerWidth * 0.75 || 2040;
 const INACTIVITY_TIMEOUT = 30000;
 
 const centerLayerStyle = reactive({ transform: 'translate3d(0px, 0px, 0px)' });
-let inactivityTimer = null;
+let inactivityTimer: ReturnType<typeof setTimeout> | null = null;
 let isResetting = ref(false);
 
-const layers = ref([
+const layers = ref<Array<{ index: number; style: any; items: IProject[] }>>([
   {
     index: 1,
     style: reactive({
@@ -184,8 +183,8 @@ const layers = ref([
   },
 ]);
 
-for (const [index, item] of props.items.entries()) {
-  const layerIndex = Math.floor(index / (props.items.length / 3));
+for (const [index, item] of props.data.items.entries()) {
+  const layerIndex = Math.floor(index / (props.data.items.length / 3));
   layers.value[layerIndex].items.push(item);
 }
 
@@ -427,7 +426,7 @@ onMounted(() => {
   itemWidth = window.innerWidth < 768 ? 300 : 600;
   itemHeight = window.innerWidth < 768 ? 125 : 350;
 
-  generatePositions(props.items.length);
+  generatePositions(props.data.items.length);
 
   let counter = 0;
 
