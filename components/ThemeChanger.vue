@@ -45,6 +45,14 @@ const changeTheme = () => {
     theme.value = 'light';
   }
 };
+
+onMounted(() => {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  console.log(prefersDark);
+  if (!prefersDark) {
+    changeTheme();
+  }
+});
 </script>
 
 <style scoped>
