@@ -301,8 +301,12 @@
       "final-proposition": "We produced a kinetic sculpture, which represents somebody who did not receive consistent or reliable care in their developing years, and as a result has developed a disorganised attachment style. The sculpture consists of 5 synchronised DC motors, mounted in a wooden frame. The motors are connected to a proximity sensor. There are fabric toppers on the motors, to emphasise the movement clearly to the viewer. The sculpture showcases a disorganised attachment style on a physical level. As the viewer approaches, the sensor triggers a change in the movement of the motors. The motors desynchronise, changing directions, speeds and stopping/starting. The conflicting and chaotic behaviour represents the conflicting desires and behaviour that a person with disorganised attachment style may exhibit. The viewer represents somebody in the machine’s adult life trying to get close, but the machine cannot react calmly, similarly to how the disorganised-style human brain is ‘programmed’ to react the same way on an emotional level.",
       "insights": "We gained many insights during this project. We learned how respond appropriately to a brief, ensuring that we were not straying from the project criteria, while also being creative and inventive. The theorist gained valuable experience researching from academic sources, and highlighting relevant information. In terms of designing, we learned how to communicate and compromise, to ensure we were all happy with the creative direction of the project. On the making side, we experimented with new materials, such as wood. We learned how to realise our designed sketches into physical forms. We pushed ourselves on a technical level, building on top of what we learned in class. We experimented with different ways to control multiple DC motors, such as the LM298N or L293D motor drivers. This gave us a deeper understanding into physical computing and circuitry. We learned how to work as a team, promoting healthy group dynamics.",
       "title": "Representing disorganised attachment style through a kinetic sculpture, reactive to proximity.",
-      "authors": "",
-      "authors-array": [" (Theorist)", " (Designer)", " (Maker)"],
+      "authors": "Orna Costello (Theorist), Zyna Dainkeh (Designer), Bethany Eve White (Maker)",
+      "authors-array": [
+        "Orna Costello (Theorist)",
+        "Zyna Dainkeh (Designer)",
+        "Bethany Eve White (Maker)"
+      ],
       "videoURL": "/brief/two/videos/compressed_group_11.mp4",
       "thumbURL": "/brief/two/thumbs/thumb_group_11.mp4.jpg"
     },
