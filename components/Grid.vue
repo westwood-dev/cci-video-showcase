@@ -191,7 +191,7 @@ const changeToGalleryView = () => {
 .title-cont {
   position: fixed;
   min-width: 380px;
-  max-width: 700px;
+  max-width: 1400px;
   width: 90vw;
   height: 50vh;
   /* max-height: 50vh; */
