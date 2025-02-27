@@ -104,7 +104,7 @@ const isScrolledDown = ref(false);
 const titleOpacity = ref(1);
 
 const handleScroll = (e: Event) => {
-  const scrollTop = e.target?.scrollTop || 0;
+  const scrollTop = (e.target as HTMLElement).scrollTop || 0;
 
   const gridContainer = document.querySelector(
     '.grid-container'
@@ -146,24 +146,35 @@ const handleItemClick = (item: IProject) => {
 
 const removeClone = () => {
   if (clonedElement.value) {
-    clonedElement.value.classList.remove('expanded');
-    clonedElement.value.addEventListener('transitionend', () => {
-      clonedElement.value?.remove();
-      clonedElement.value = null;
-    });
+    (clonedElement.value as HTMLElement).classList.remove('expanded');
+    (clonedElement.value as HTMLElement).addEventListener(
+      'transitionend',
+      () => {
+        clonedElement.value
+          ? (clonedElement.value as HTMLElement).remove()
+          : null;
+        clonedElement.value = null;
+      }
+    );
   }
 };
 
 const devValue = ref('Hello');
 
 onMounted(() => {
-  const scrollTop = document.querySelector('.grid-comp-cont').scrollTop;
+  if (!document.querySelector('.grid-comp-cont')) return;
+  if (!document.querySelector('.grid-container')) return;
+
+  const scrollTop = (document.querySelector('.grid-comp-cont') as HTMLElement)
+    .scrollTop;
   const percentScroll =
     1 -
     scrollTop /
       parseFloat(
         window
-          .getComputedStyle(document.querySelector('.grid-container'))
+          .getComputedStyle(
+            document.querySelector('.grid-container') as HTMLElement
+          )
           .getPropertyValue('padding-top')
           .replace('px', '')
       );

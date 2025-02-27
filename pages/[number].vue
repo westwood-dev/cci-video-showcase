@@ -34,11 +34,6 @@ if (typeof number === 'number') {
 
 const { data } = await useFetch<IBrief>(`/results_${number}.json`);
 
-onMounted(() => {
-  console.log(params.number, number);
-  console.log(data.value);
-  // items.value = data.value;
-});
 </script>
 
 <style scoped>

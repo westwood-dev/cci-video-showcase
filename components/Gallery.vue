@@ -139,7 +139,7 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, onUnmounted } from 'vue';
 
-import type { IProject, IBrief } from '@/types/brief.type';
+import type { IProject, IBrief, IFocused, IPosition } from '@/types/brief.type';
 
 const props = defineProps<{
   data: IBrief;
@@ -200,9 +200,9 @@ const targetY = ref(0);
 
 const blocker = ref(false);
 
-let animationFrameId;
+let animationFrameId: number;
 
-const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
 const resetPosition = () => {
   isResetting.value = true;
@@ -212,13 +212,13 @@ const resetPosition = () => {
 };
 
 const startInactivityTimer = (multiplier = 1) => {
-  clearTimeout(inactivityTimer);
+  inactivityTimer ? clearTimeout(inactivityTimer) : null;
   inactivityTimer = setTimeout(() => {
     resetPosition();
   }, INACTIVITY_TIMEOUT * multiplier);
 };
 
-const handleMouseMove = (event) => {
+const handleMouseMove = (event: MouseEvent) => {
   if (blocker.value) {
     return;
   }
@@ -226,9 +226,9 @@ const handleMouseMove = (event) => {
   interactionType.value = 'mouse';
   isResetting.value = false;
 
-  const containerRect = document
-    .querySelector('.gallery-container')
-    .getBoundingClientRect();
+  const containerElement = document.querySelector('.gallery-container');
+  if (!containerElement) return;
+  const containerRect = containerElement.getBoundingClientRect();
   const centerX = containerRect.left + containerRect.width / 2;
   const centerY = containerRect.top + containerRect.height / 2;
 
@@ -244,12 +244,17 @@ const handleMouseLeave = () => {
   startInactivityTimer(0.3);
 };
 
-const focusedItem = ref(null);
+const focusedItem: Ref<IFocused | null> = ref(null);
 const focusedItemStyle = ref({});
 
-const handleItemClick = async (e, layerIndex, itemIndex, itemData) => {
+const handleItemClick = async (
+  e: Event,
+  layerIndex: number,
+  itemIndex: number,
+  itemData: IProject
+) => {
   const item = e.target;
-  const itemRect = item.getBoundingClientRect();
+  const itemRect = (item as HTMLElement).getBoundingClientRect();
 
   blocker.value = true;
 
@@ -323,28 +328,38 @@ const handleBlockerClick = async () => {
   blocker.value = false;
 };
 
-const handleFocusedItemClick = (e) => {
+const handleFocusedItemClick = (e: MouseEvent) => {
   e.stopPropagation();
 };
 
-const handleItemHover = (layerIndex, itemIndex, item) => {
-  document.getElementById(
+const handleItemHover = (
+  layerIndex: number,
+  itemIndex: number,
+  item: IProject
+) => {
+  const detailsElement = document.getElementById(
     'details-' + layerIndex + '-' + itemIndex
-  ).style.display = 'flex';
-  document.getElementById(
-    'details-' + layerIndex + '-' + itemIndex
-  ).style.opacity = 1;
+  );
+  if (detailsElement) {
+    detailsElement.style.display = 'flex';
+    detailsElement.style.opacity = '1';
+  }
 };
 
-const handleItemLeave = (layerIndex, itemIndex, item) => {
-  document.getElementById(
+const handleItemLeave = (
+  layerIndex: number,
+  itemIndex: number,
+  item: IProject
+) => {
+  const detailsElement = document.getElementById(
     'details-' + layerIndex + '-' + itemIndex
-  ).style.opacity = 0;
-  setTimeout(() => {
-    document.getElementById(
-      'details-' + layerIndex + '-' + itemIndex
-    ).style.display = 'none';
-  }, 300);
+  );
+  if (detailsElement) {
+    detailsElement.style.opacity = '0';
+    setTimeout(() => {
+      detailsElement.style.display = 'none';
+    }, 300);
+  }
 };
 
 let itemWidth = 600;
@@ -353,7 +368,7 @@ const padding = 20;
 const centerSize = 500;
 const maxDistance = containerWidth / 2;
 
-const positions = ref([]);
+const positions: Ref<IPosition[] | null> = ref([]);
 
 const generatePositionAroundCenter = () => {
   const centerX = containerWidth / 2;
@@ -371,7 +386,7 @@ const generatePositionAroundCenter = () => {
   };
 };
 
-const hasOverlap = (newPos, existingPositions) => {
+const hasOverlap = (newPos: IPosition, existingPositions: IPosition[]) => {
   const centerX = containerWidth / 2;
   const centerY = containerHeight / 2;
   const centerOverlap =
@@ -387,13 +402,13 @@ const hasOverlap = (newPos, existingPositions) => {
   });
 };
 
-const generatePositions = (numItems) => {
-  const newPositions = [];
+const generatePositions = (numItems: number) => {
+  const newPositions: IPosition[] = [];
 
   for (let i = 0; i < numItems; i++) {
     let attempts = 0;
     let validPosition = false;
-    let position;
+    let position: IPosition;
 
     while (!validPosition && attempts < 100) {
       const pos = generatePositionAroundCenter();
@@ -432,6 +447,8 @@ onMounted(() => {
 
   layers.value.forEach((layer) => {
     layer.items.forEach((_, itemIndex) => {
+      if (!positions.value) return;
+
       if (counter >= positions.value.length) {
         console.warn('Not enough positions for all items');
         return;
@@ -443,7 +460,7 @@ onMounted(() => {
 
       const item = document.querySelectorAll(
         `.gallery-layer-${layer.index} .item`
-      )[itemIndex];
+      )[itemIndex] as HTMLElement;
       if (item) {
         item.style.top = `${top}px`;
         item.style.left = `${left}px`;
@@ -500,7 +517,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   cancelAnimationFrame(animationFrameId);
-  clearTimeout(inactivityTimer);
+  inactivityTimer ? clearTimeout(inactivityTimer) : null;
 });
 
 const lastTouchPos = ref({ x: 0, y: 0 });
@@ -508,7 +525,7 @@ const currentOffset = ref({ x: 0, y: 0 });
 const isDragging = ref(false);
 const interactionType = ref('none');
 
-const handleTouchStart = (e) => {
+const handleTouchStart = (e: TouchEvent) => {
   interactionType.value = 'touch';
   cancelAnimationFrame(animationFrameId);
   isDragging.value = true;
@@ -518,7 +535,7 @@ const handleTouchStart = (e) => {
   };
 };
 
-const handleTouchMove = (e) => {
+const handleTouchMove = (e: TouchEvent) => {
   if (!isDragging.value) return;
   e.preventDefault();
 

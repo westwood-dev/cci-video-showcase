@@ -4,24 +4,18 @@ import json
 import argparse
 
 def parse_authors(author_string):
-    """Parse author string into array of individual authors with roles."""
-    # Remove any extra whitespace
     author_string = author_string.strip()
     
-    # Handle cases with no parentheses
     if '(' not in author_string:
         return [x.strip() for x in author_string.split(',') if x.strip()]
     
-    # Split on various delimiters while preserving role info
     authors = []
     
-    # Handle both comma and closing parenthesis as delimiters
     parts = re.split(r'\)[\s,]*', author_string)
     
     for part in parts:
         part = part.strip()
-        if part:  # Skip empty strings
-            # Add back the closing parenthesis if it had one
+        if part:
             if '(' in part and ')' not in part:
                 part = part + ')'
             authors.append(part)
@@ -32,20 +26,16 @@ def xlsx_to_json(xlsx_file, json_file):
     
     refused = []
 
-    # Read the Excel file
     df = pd.read_excel(xlsx_file)
     
-    # Convert the DataFrame to a dictionary, converting Timestamps to strings
     data = df.astype(str).to_dict(orient='records')
     
     refined_data = []
 
-    # Remove the "Start time", "Email" and "Last modified time" entries
     for entry in data:
         
         if (entry["Do you consent to us storing your video and responses for use on the Diploma video platform (to show other students in your year group)"] == 'No'):
             refused.append(entry['ID'] + ' | ' + entry['Group Members and roles [Format: Murad (Theorist), Irti (Designer), Jen (Maker)]'])
-            # data.remove(entry)
             continue
 
         entry.pop("Start time", None)
@@ -66,7 +56,6 @@ def xlsx_to_json(xlsx_file, json_file):
 
         refined_data.append(entry)
 
-    # Write the dictionary to a JSON file
     with open(json_file, 'w') as f:
         json.dump(refined_data, f, indent=4)
 

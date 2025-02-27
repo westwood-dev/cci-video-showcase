@@ -1,3 +1,9 @@
+interface IPosition {
+  x: number;
+  y: number;
+  id: number;
+}
+
 interface IProject {
   ID: string;
   title: string;
@@ -15,4 +21,13 @@ interface IBrief {
   items: IProject[];
 }
 
-export type { IProject, IBrief };
+interface IFocused {
+  id: string;
+  layerIndex: number;
+  itemIndex: number;
+  initialRect: DOMRect;
+  animating: boolean;
+  itemData: IProject;
+}
+
+export type { IPosition, IProject, IBrief, IFocused };

@@ -4,9 +4,7 @@ from pathlib import Path
 import argparse
 
 def compress_video(input_path, output_path):
-  """Compress video using ffmpeg with specified parameters."""
   try:
-    # Ensure the output file has an .mp4 extension
     if not str(output_path).endswith('.mp4'):
       output_path = str(output_path) + '.mp4'
     cmd = [
@@ -26,7 +24,6 @@ def compress_video(input_path, output_path):
     return False
 
 def extract_thumbnail(input_path, output_path, time='00:00:01', size='320x240'):
-    """Extract thumbnail from video at specified timestamp."""
     try:
         cmd = [
             'ffmpeg',
@@ -43,13 +40,11 @@ def extract_thumbnail(input_path, output_path, time='00:00:01', size='320x240'):
         return False
 
 def process_folder(folder_path):
-  """Process all video files in the specified folder."""
   folder = Path(folder_path)
-  video_extensions = ['.mp4', '.avi', '.mov', '.mkv']  # Add more if needed
+  video_extensions = ['.mp4', '.avi', '.mov', '.mkv']
   
   for file_path in folder.glob('*'):
     if file_path.suffix.lower() in video_extensions:
-      # Setup paths
       base_name = file_path.name.replace(' ', '_')
       if args.output:
         output_dir = Path(args.output)

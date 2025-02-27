@@ -1,75 +1,18 @@
-# Nuxt Minimal Starter
+# CCI Video Submission Showcase Website
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Description
 
-## Setup
+This website is a showcase for student project submissions. Videos are submitted by students via MS forms and processed with two Python scripts, one for compressing, reformatting and generating thumbnails from the videos, and the other is for migrating the data from the MS Forms xcel format to a JSON format.
 
-Make sure to install dependencies:
+The website is built with Nuxt, and built and deployed with Github Actions and Github Pages. Accessible [here](https://cci.wwstwd.studio/).
 
-```bash
-# npm
-npm install
+## Installation
 
-# pnpm
-pnpm install
+1. Clone the repository
+2. Run `npm install`
+3. Run `npm run dev`
+4. Open `http://localhost:3000` in your browser
 
-# yarn
-yarn install
+## Notes
 
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+The student work is submitted and hosted with explicit permission to be used and showcased on this website. Rights to the work remain with the students and UAL.
